@@ -3,7 +3,7 @@
 //Step 1. Gross Income = Basic salary + allowances + commissions. 
 //Step 2. Taxable Income = Gross Income - all deductions/exemptions allowed by law e.g. NSSF, private pension.
 
-// Calculation of PAYE
+// Calculation of PAYE Tax
 // Gross Income = Basic Salary + Allowances + Commissions + Other Emoluments
 // Taxable Income = Gross Income – all deductions/exemptions allowed by law e.g. NSSF, private pension
 // Taxable income obtained after step 2 must be applied to the tax slab.

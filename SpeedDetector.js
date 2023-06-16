@@ -12,7 +12,7 @@ let demeritPoint = 0
 let driverSpeed = prompt("Enter the driver's speed: ")
 
 
-//Define a function that checks the driver's speed. 
+//Define a function that checks the driver's speed and accepts it as a parameter
 function speedDetector(speed){
     if(speed <= speedLimit){//Prints ok if the speed is below speed limit
     console.log("Ok")
