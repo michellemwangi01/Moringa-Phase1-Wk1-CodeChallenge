@@ -6,7 +6,7 @@
 
 
 //declares and initializes the studentMarks variable, getting the value from a user input
-const studentmark = prompt('Please enter student studentmarks:');
+const studentmark = prompt('Please enter the student student marks:');
 
 //A function to calculate the student grade from their marks
 function studentGrader(studentmark){
