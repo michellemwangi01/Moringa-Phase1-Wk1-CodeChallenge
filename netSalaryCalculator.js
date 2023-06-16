@@ -14,6 +14,14 @@
 //Declares the global variables to be used in the program
 let grossSalary, taxableIncome, taxDeductions, netSalary, NHIF, NSSF, NSSFType, PAYE
 const personalRelief = 2400//initialize the constant varible personal relief
+let basicSalary, benefits = 0;
+
+
+//accept user input for basic salary and benefits, saves the input into the respective variables and converts each into a number
+basicSalary = prompt("Please enter your basic salary: ")
+basicSalary = parseInt(basicSalary,10)
+benefits = prompt("Please enter your monetary benefits: ")
+benefits = parseInt(benefits,10)
 
 //MONTHLY TAXABLE INCOME CALCULATOR FUNCTION - A function that calculates and returns taxable income from the gross salary
 function taxableIncomeCalculator(grossSalary){
@@ -54,7 +62,7 @@ function PAYECalculator(){
         PAYE = (24000*0.1) + ((32333 - 24000)*0.25) + ((taxableIncome-32333)*0.3)
     }
 
-    return PAYE = PAYE.toFixed(2);//returns the PAYE value as the final output of the function and converts the PAYE amount into a float with 2 decimals
+    return PAYE.toFixed(2);//returns the PAYE value as the final output of the function and converts the PAYE amount into a float with 2 decimals
 }
 
 
@@ -111,35 +119,42 @@ function NHIFCalculator() {
             NHIF = 1600            
             break;
             case (grossSalary >= 100000):
-                NHIF = 1700
+            NHIF = 1700
     
         default:
             break;
     }
-    return NHIF = NHIF.toFixed(2)//returns the NHIF value as the final output of the function and converts the NHIF amount into a float with 2 decimals
+    return NHIF = parseFloat(NHIF.toFixed(2))//returns the NHIF value as the final output of the function and converts the NHIF amount into a float with 2 decimals
 }
 
 
 //MONTHLY NET SALARY CALCULATOR - (https://www.aren.co.ke/calculators/payecalc.php) for confirmation without NHIF
 // A function that calculates the Net Salary. It accepts the basic salary, benefits, taxableincomecalculator Function, PAYECalculator Function & NHIFCalculator Function as firstclass functions
 function netSalaryCalculator(basicSalary, benefits, taxableIncomeCalculator,PAYECalculator,NHIFCalculator ){
+
     grossSalary = basicSalary + benefits //gross salary calculated as basicSalary plus benefits
     taxableIncome = taxableIncomeCalculator(grossSalary)//calls the taxableIncomeCalculator function, passing the grossSalary and stores its return value in the taxableIncome variable
     PAYE = PAYECalculator() //calls the PAYECalculator function and stores its return value in the PAYE variable
     NHIF = NHIFCalculator()//calls the NHIFCalculator function and stores its return value in the NHIF variable
 
-    taxDeductions = (PAYE - personalRelief) + NHIF //calulates taxDeductions including the personal Relief
+    console.log(typeof(NHIF))
+    taxDeductions = ((PAYE - personalRelief.toFixed(2)) + NHIF)//calulates taxDeductions including the personal Relief
+    console.log(taxDeductions)
+    console.log(PAYE)
+    console.log(personalRelief)
+
+
     netSalary = (taxableIncome - taxDeductions)// calculates netSalary
   
 
     //prints the results of all the values of the defined variables
-    console.log(`Gross Salary: ${grossSalary}\nNSSF: ${NSSF}\nTaxable Income: ${taxableIncome}\nPAYE: ${PAYE}\nPersonal relief: ${personalRelief}\nPAYE After Personal Relief: ${PAYE-personalRelief}\nNHIF: ${NHIF}\nTotal Tax Deductions: ${taxDeductions}\nNet Salary: ${netSalary}`)  
+    console.log(`Gross Salary: ${grossSalary}\nNSSF: ${NSSF}\nTaxable Income: ${taxableIncome}\nPAYE: ${PAYE}\nPersonal relief: ${personalRelief}\nPAYE After Personal Relief: ${PAYE-personalRelief}\nNHIF: ${NHIF}\nTotal Tax Deductions: ${taxDeductions} \nNet Salary: ${netSalary}`)  
     
     //returns the netsalary as the final output of the function and converts the netsalary amount into a float with 2 decimals
-    return netSalary;
+    return netSalary.toFixed(2);
 }
 //calls the netSalaryCalculator function which is the main function and passes in the arguments of basicSalary & benefits as well as taxableIncomeCalculator,PAYECalculator,NHIFCalculator which are functions
-netSalaryCalculator(2000, 20, taxableIncomeCalculator, PAYECalculator, NHIFCalculator)
+netSalaryCalculator(basicSalary, benefits, taxableIncomeCalculator, PAYECalculator, NHIFCalculator)
 
 
 
