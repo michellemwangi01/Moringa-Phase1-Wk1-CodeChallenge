@@ -16,8 +16,7 @@ let grossSalary, taxableIncome, taxDeductions, netSalary, NHIF, NSSF, NSSFType, 
 const personalRelief = 2400//initialize the constant varible personal relief
 let basicSalary, benefits = 0;
 
-
-//accept user input for basic salary and benefits, saves the input into the respective variables and converts each into a number
+//accept user input for global variables basic salary and benefits, saves the input into the respective variables and converts each into a number
 basicSalary = prompt("Please enter your basic salary: ")
 basicSalary = parseInt(basicSalary,10)
 benefits = prompt("Please enter your monetary benefits: ")
