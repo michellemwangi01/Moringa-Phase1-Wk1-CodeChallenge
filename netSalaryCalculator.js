@@ -11,20 +11,22 @@
 // Tax Payable = Total PAYE – Total Relief e.g. Personal Relief, Insurance Relief
 
 
-
+//Declares the global variables to be used in the program
 let grossSalary, taxableIncome, taxDeductions, netSalary, NHIF, NSSF, NSSFType, PAYE
-const personalRelief = 2400
+const personalRelief = 2400//initialize the constant varible personal relief
 
-//MONTHLY TAXABLE INCOME CALCULATOR
+//MONTHLY TAXABLE INCOME CALCULATOR FUNCTION - A function that calculates and returns taxable income from the gross salary
 function taxableIncomeCalculator(grossSalary){
+    //The while statement contains a prompt that accepts a number from the user that indicates which NSSF type is to be used in the program. As long as the values entered are incorrect, the prompt continues to display till the user enters the expected input
     let NSSFTypeString = "0";
     while(NSSFTypeString !== "1" && NSSFTypeString !== "2" && NSSFTypeString !== "3" && NSSFTypeString !== "4"){
         NSSFTypeString = prompt("Please select one option for the NSSF Type (enter 1, 2 or 3):\n 1. Old Rates \n 2. Tier I \n 3. Tier II \n 4.Tier I & Tier II")
     }
 
-    // NSSFType = 4
+    //NSSFType = 4
 
-    NSSFType = parseInt(NSSFTypeString,10);
+    NSSFType = parseInt(NSSFTypeString,10);//changes the user input into a number from a string and saves it into a new variable
+    //The if statement sets the value of the NSSF variable depending on the selection made by the user
     if(NSSFType == 1){
         NSSF = 200;
     }else if(NSSFType == 2){
@@ -36,27 +38,29 @@ function taxableIncomeCalculator(grossSalary){
         NSSF = 1080;
     }
     taxableIncome = grossSalary - NSSF
-    return taxableIncome
+    return taxableIncome.toFixed(2)//returns the taxableIncome value as the final output of the function and converts the taxableIncome amount into a float with 2 decimals
 
 }
 
 
-//MONTHLY PAYE CALCULATOR
+//MONTHLY PAYE CALCULATOR - A function that calculates PAYE. It uses the taxable income and calculates PAYE based on the income amount and the Kenyan PAYE Tax Slab. For every range, there is a different set of calculations as seen below
 function PAYECalculator(){
-    if(taxableIncome >0 && taxableIncome <= 24000){
+    
+    if(taxableIncome >0 && taxableIncome <= 24000){//for range 0 - 24000
         PAYE = (taxableIncome * 0.1)
-    }else if( taxableIncome > 24000 && taxableIncome <= 32333){
+    }else if( taxableIncome > 24000 && taxableIncome <= 32333){//for range 24001 - 32333
         PAYE =  ((24000*0.1) + (taxableIncome - 24000)*0.25)
-    }else if(taxableIncome > 32333){
+    }else if(taxableIncome > 32333){////for range 32334 and above
         PAYE = (24000*0.1) + ((32333 - 24000)*0.25) + ((taxableIncome-32333)*0.3)
     }
 
-    return PAYE = PAYE.toFixed(2);
+    return PAYE = PAYE.toFixed(2);//returns the PAYE value as the final output of the function and converts the PAYE amount into a float with 2 decimals
 }
 
 
-//MONTHLY NHIF CALCULATOR
+//MONTHLY NHIF CALCULATOR - A function that calculates the NHIF amount based on the rates provided here --> (https://www.aren.co.ke/payroll/taxrates.htm) 
 function NHIFCalculator() {
+    //The switch statement checks the value entered by the user,  maps it to the correct range an sets the NHIF for that range.
     switch (true) {
         case (grossSalary < 5999):
             NHIF = 150            
@@ -112,24 +116,30 @@ function NHIFCalculator() {
         default:
             break;
     }
-    return NHIF
+    return NHIF = NHIF.toFixed(2)//returns the NHIF value as the final output of the function and converts the NHIF amount into a float with 2 decimals
 }
 
 
 //MONTHLY NET SALARY CALCULATOR - (https://www.aren.co.ke/calculators/payecalc.php) for confirmation without NHIF
+// A function that calculates the Net Salary. It accepts the basic salary, benefits, taxableincomecalculator Function, PAYECalculator Function & NHIFCalculator Function as firstclass functions
 function netSalaryCalculator(basicSalary, benefits, taxableIncomeCalculator,PAYECalculator,NHIFCalculator ){
-    grossSalary = basicSalary + benefits
-    taxableIncome = taxableIncomeCalculator(grossSalary)
-    PAYE = PAYECalculator()
-    NHIF = NHIFCalculator()
+    grossSalary = basicSalary + benefits //gross salary calculated as basicSalary plus benefits
+    taxableIncome = taxableIncomeCalculator(grossSalary)//calls the taxableIncomeCalculator function, passing the grossSalary and stores its return value in the taxableIncome variable
+    PAYE = PAYECalculator() //calls the PAYECalculator function and stores its return value in the PAYE variable
+    NHIF = NHIFCalculator()//calls the NHIFCalculator function and stores its return value in the NHIF variable
 
-    taxDeductions = (PAYE - personalRelief) + NHIF
-    netSalary = (taxableIncome - taxDeductions )
-    console.log(`Gross Salary: ${grossSalary}\nTaxable Income: ${taxableIncome}\nPAYE: ${PAYE}\nPersonal relief: ${personalRelief}\nPAYE After Personal Relief: ${PAYE-personalRelief}\nNHIF: ${NHIF}\nTotal Tax Deductions: ${taxDeductions}\nNet Salary: ${netSalary}`)  
+    taxDeductions = (PAYE - personalRelief) + NHIF //calulates taxDeductions including the personal Relief
+    netSalary = (taxableIncome - taxDeductions)// calculates netSalary
+  
+
+    //prints the results of all the values of the defined variables
+    console.log(`Gross Salary: ${grossSalary}\nNSSF: ${NSSF}\nTaxable Income: ${taxableIncome}\nPAYE: ${PAYE}\nPersonal relief: ${personalRelief}\nPAYE After Personal Relief: ${PAYE-personalRelief}\nNHIF: ${NHIF}\nTotal Tax Deductions: ${taxDeductions}\nNet Salary: ${netSalary}`)  
+    
+    //returns the netsalary as the final output of the function and converts the netsalary amount into a float with 2 decimals
     return netSalary;
 }
-
-netSalaryCalculator(52000, 2000, taxableIncomeCalculator, PAYECalculator, NHIFCalculator)
+//calls the netSalaryCalculator function which is the main function and passes in the arguments of basicSalary & benefits as well as taxableIncomeCalculator,PAYECalculator,NHIFCalculator which are functions
+netSalaryCalculator(2000, 20, taxableIncomeCalculator, PAYECalculator, NHIFCalculator)
 
 
 
