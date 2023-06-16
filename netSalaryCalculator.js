@@ -15,20 +15,31 @@
 // Total PAYE tax = Sum of the marginal taxes from step 3
 // Tax Payable = Total PAYE – Total Relief e.g. Personal Relief, Insurance Relief
 
-let grossSalary, taxableIncome, taxDeductions, netSalary, NHIF, NSSF, NSSFType, PAYE
 
+
+
+
+
+
+let grossSalary, taxableIncome, taxDeductions, netSalary, NHIF, NSSF, NSSFType, PAYE
+const personalRelief = 2400
 //MONTHLY TAXABLE INCOME CALCULATOR
 function taxableIncomeCalculator(grossSalary){
-    let NSSFTypeString = "0";
-    while(NSSFTypeString !== "1" && NSSFTypeString !== "2" && NSSFTypeString !== "3"){
-        NSSFTypeString = prompt("Please select one option for the NSSF Type (enter 1, 2 or 3):\n 1. Old Rates \n 2. Tier I \n 3. Tier I & II")
-    }
-    NSSFType = parseInt(NSSFTypeString,10);
+    // let NSSFTypeString = "0";
+    // while(NSSFTypeString !== "1" && NSSFTypeString !== "2" && NSSFTypeString !== "3"){
+    //     NSSFTypeString = prompt("Please select one option for the NSSF Type (enter 1, 2 or 3):\n 1. Old Rates \n 2. Tier I \n 3. Tier II \n 4.Tier I & Tier II")
+    // }
+
+    NSSFType = 4
+    //NSSFType = parseInt(NSSFTypeString,10);
     if(NSSFType == 1){
         NSSF = 200;
     }else if(NSSFType == 2){
         NSSF = 360;
     }else if(NSSFType == 3){
+        NSSF = 720;
+    }
+    else if(NSSFType == 4){
         NSSF = 1080;
     }
     taxableIncome = grossSalary - NSSF
@@ -36,9 +47,9 @@ function taxableIncomeCalculator(grossSalary){
 
 }
 
+
 //MONTHLY PAYE CALCULATOR
-function payeCalculator(taxableIncomeCalculator,grossSalary){
-    taxableIncome = taxableIncomeCalculator(grossSalary);
+function PAYECalculator(){
     if(taxableIncome >0 && taxableIncome <= 24000){
         PAYE = (taxableIncome * 0.1)
     }else if( taxableIncome > 24000 && taxableIncome <= 32333){
@@ -46,13 +57,13 @@ function payeCalculator(taxableIncomeCalculator,grossSalary){
     }else if(taxableIncome > 32333){
         PAYE = (24000*0.1) + ((32333 - 24000)*0.25) + ((taxableIncome-32333)*0.3)
     }
-    return PAYE;
-}//console.log(payeCalculator(taxableIncomeCalculator, 50000))
+
+    return PAYE = PAYE.toFixed(2);
+}//console.log(PAYECalculator(taxableIncomeCalculator, 50000))
 
 
 //MONTHLY NHIF CALCULATOR
-function NHIFDeductions(grossSalary) {
-   
+function NHIFCalculator() {
     switch (true) {
         case (grossSalary < 5999):
             NHIF = 150            
@@ -109,18 +120,23 @@ function NHIFDeductions(grossSalary) {
             break;
     }
     return NHIF
-}
-NHIFDeductions(15890)
+}//console.log(NHIFCalculator(39098));
 
-function netSalaryCalculator(basicSalary, benefits){
+
+//MONTHLY NET CALCULATOR - (https://www.aren.co.ke/calculators/payecalc.php) for confirmation without NHIF
+function netSalaryCalculator(basicSalary, benefits, taxableIncomeCalculator,PAYECalculator,NHIFCalculator ){
     grossSalary = basicSalary + benefits
-    taxableIncome = grossSalary - NSSF
-    PAYE = //tax slab calculation
-    taxDeductions = (NHIF + PAYE) - personalRelief    
-    netSalary = grossSalary = taxDeductions
+    taxableIncome = taxableIncomeCalculator(grossSalary)
+    PAYE = PAYECalculator()
+    NHIF = NHIFCalculator()
 
+    taxDeductions = (PAYE - personalRelief) + NHIF
+    netSalary = (taxableIncome - taxDeductions )
+    console.log(`Gross Salary: ${grossSalary}\nTaxable Income: ${taxableIncome}\nPAYE: ${PAYE}\nPersonal relief: ${personalRelief}\nPAYE After Personal Relief: ${PAYE-personalRelief}\nNHIF: ${NHIF}\nTotal Tax Deductions: ${taxDeductions}\nNet Salary: ${netSalary}`)  
+    return netSalary;
 }
 
+netSalaryCalculator(48000, 2000, taxableIncomeCalculator, PAYECalculator, NHIFCalculator)
 
 
 
