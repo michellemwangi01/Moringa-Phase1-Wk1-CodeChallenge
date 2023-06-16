@@ -1,9 +1,4 @@
-// Calculate the 
-// payee (i.e. Tax), 
-// NHIFDeductions, 
-// NSSFDeductions, 
-// gross salary,
-// net salary. 
+// Calculate the payee (i.e. Tax), NHIFDeductions, NSSFDeductions, gross salary, net salary. 
 
 //Step 1. Gross Income = Basic salary + allowances + commissions. 
 //Step 2. Taxable Income = Gross Income - all deductions/exemptions allowed by law e.g. NSSF, private pension.
@@ -17,21 +12,19 @@
 
 
 
-
-
-
-
 let grossSalary, taxableIncome, taxDeductions, netSalary, NHIF, NSSF, NSSFType, PAYE
 const personalRelief = 2400
+
 //MONTHLY TAXABLE INCOME CALCULATOR
 function taxableIncomeCalculator(grossSalary){
-    // let NSSFTypeString = "0";
-    // while(NSSFTypeString !== "1" && NSSFTypeString !== "2" && NSSFTypeString !== "3"){
-    //     NSSFTypeString = prompt("Please select one option for the NSSF Type (enter 1, 2 or 3):\n 1. Old Rates \n 2. Tier I \n 3. Tier II \n 4.Tier I & Tier II")
-    // }
+    let NSSFTypeString = "0";
+    while(NSSFTypeString !== "1" && NSSFTypeString !== "2" && NSSFTypeString !== "3" && NSSFTypeString !== "4"){
+        NSSFTypeString = prompt("Please select one option for the NSSF Type (enter 1, 2 or 3):\n 1. Old Rates \n 2. Tier I \n 3. Tier II \n 4.Tier I & Tier II")
+    }
 
-    NSSFType = 4
-    //NSSFType = parseInt(NSSFTypeString,10);
+    // NSSFType = 4
+
+    NSSFType = parseInt(NSSFTypeString,10);
     if(NSSFType == 1){
         NSSF = 200;
     }else if(NSSFType == 2){
@@ -59,7 +52,7 @@ function PAYECalculator(){
     }
 
     return PAYE = PAYE.toFixed(2);
-}//console.log(PAYECalculator(taxableIncomeCalculator, 50000))
+}
 
 
 //MONTHLY NHIF CALCULATOR
@@ -120,10 +113,10 @@ function NHIFCalculator() {
             break;
     }
     return NHIF
-}//console.log(NHIFCalculator(39098));
+}
 
 
-//MONTHLY NET CALCULATOR - (https://www.aren.co.ke/calculators/payecalc.php) for confirmation without NHIF
+//MONTHLY NET SALARY CALCULATOR - (https://www.aren.co.ke/calculators/payecalc.php) for confirmation without NHIF
 function netSalaryCalculator(basicSalary, benefits, taxableIncomeCalculator,PAYECalculator,NHIFCalculator ){
     grossSalary = basicSalary + benefits
     taxableIncome = taxableIncomeCalculator(grossSalary)
@@ -136,7 +129,7 @@ function netSalaryCalculator(basicSalary, benefits, taxableIncomeCalculator,PAYE
     return netSalary;
 }
 
-netSalaryCalculator(48000, 2000, taxableIncomeCalculator, PAYECalculator, NHIFCalculator)
+netSalaryCalculator(52000, 2000, taxableIncomeCalculator, PAYECalculator, NHIFCalculator)
 
 
 
