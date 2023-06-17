@@ -48,7 +48,7 @@ This will run the program, initiating some prompts for the user to provide the r
 This program was written by and licensed to [Michelle Mwangi] (https://github.com/michellemwangi01/).
 
 
-## TITLE: CHALLENGE ~ NET SALARY CALCULATOR
+## TITLE: CHALLENGE 3 ~ NET SALARY CALCULATOR
 
 ## Description 
 Is a Javascript program that calculates net salary. It takes a gross salary as input and calculates the net salary. Here is a brief description of such a program:
