@@ -1,9 +1,9 @@
 # Moringa-Phase1-Wk1-CodeChallenge
 
 
-## TITLE: Challenge 1: Student Grade Generator
+## Title: Challenge 1: Student Grade Generator
 
-## DESCRIPTION
+## Description
 
 This is a JavaScript program that takes a student's marks as input and determines their corresponding grade based on the marks. Here is a summary of the code:
 
@@ -13,7 +13,7 @@ Inside the studentGrader function, there is an if statement that checks if the s
 
 A switch statement is used to compare the studentmark against different cases representing the grade ranges. If a case evaluates to true, meaning the studentmark falls within that range, the corresponding grade is printed out. If none of the cases in the switch statement match the studentmark, the code does not print any grade. 
 
-## PROJECT SETUP
+## Project Setup
 Prerequisites: Web browser such as Chrome or Firefox Mozilla
 Run Instructions: The program can be run on any browser by accesisng the browser's developer tools. Within the console tab, copy the code and click enter. 
 This will run the program, initiating some prompts for the user to provide the required information.
@@ -37,7 +37,7 @@ The speedDetector function, checks if the speed is less than, equal to, or over 
 In case the speed is above the speed limit, the program calculates the number of demerit points to assign. In the scenario that the demeritPoints are greater than 12, the driver's license is suspended. 
 
 
-## PROJECT SETUP
+## Project Setup
 Prerequisites: Web browser such as Chrome or Firefox Mozilla
 Run Instructions: The program can be run on any browser by accesisng the browser's developer tools. Within the console tab, copy the code and click enter. 
 This will run the program, initiating some prompts for the user to provide the required information.
@@ -62,7 +62,7 @@ It also takes personal relief into consideration, once the taxes are calculated,
 Once the calculations are complete, the program displays the all the relevant information. 
 
 
-## PROJECT SETUP
+## Project Setup
 Prerequisites: Web browser such as Chrome or Firefox Mozilla
 Run Instructions: The program can be run on any browser by accesisng the browser's developer tools. Within the console tab, copy the code and click enter. 
 This will run the program, initiating some prompts for the user to provide the required information.
