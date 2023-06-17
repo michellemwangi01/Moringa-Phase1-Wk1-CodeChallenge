@@ -1,7 +1,7 @@
 # Moringa-Phase1-Wk1-CodeChallenge
 
 
-## Title: Challenge 1: Student Grade Generator
+## TITLE: CHALLENGE 1 ~ STUDENT GRADE GENERATOR
 
 ## Description
 
@@ -25,7 +25,7 @@ This program was written by and licensed to [Michelle Mwangi] (https://github.co
 
 
 
-## TITLE: Challenge 2: Speed Detector
+## TITLE: CHALLENGE 2 ~ SPEED CALCULATOR
 
 ## Description
 Is a JavaScript program that determines the number of demerit points a driver should receive based on their speed. A brief breakdown of the code:
@@ -48,7 +48,7 @@ This will run the program, initiating some prompts for the user to provide the r
 This program was written by and licensed to [Michelle Mwangi] (https://github.com/michellemwangi01/).
 
 
-## TITLE: Challenge 3: Net Salary Calculator
+## TITLE: CHALLENGE ~ NET SALARY CALCULATOR
 
 ## Description 
 Is a Javascript program that calculates net salary. It takes a gross salary as input and calculates the net salary. Here is a brief description of such a program:
