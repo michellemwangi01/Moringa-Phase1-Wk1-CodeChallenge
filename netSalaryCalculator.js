@@ -135,19 +135,23 @@ function netSalaryCalculator(basicSalary, benefits, taxableIncomeCalculator,PAYE
     taxableIncome = taxableIncomeCalculator(grossSalary)//calls the taxableIncomeCalculator function, passing the grossSalary and stores its return value in the taxableIncome variable
     PAYE = PAYECalculator() //calls the PAYECalculator function and stores its return value in the PAYE variable
     NHIF = NHIFCalculator()//calls the NHIFCalculator function and stores its return value in the NHIF variable
-
-    console.log(typeof(NHIF))
-    taxDeductions = ((PAYE - personalRelief.toFixed(2)) + NHIF)//calulates taxDeductions including the personal Relief
-    console.log(taxDeductions)
-    console.log(PAYE)
-    console.log(personalRelief)
+    PAYEAfterPersonalRelief = PAYE - personalRelief
+    if(PAYEAfterPersonalRelief < 0){
+        PAYEAfterPersonalRelief = 0
+    }
+    taxDeductions = ((PAYEAfterPersonalRelief) + NHIF)//calulates taxDeductions including the personal Relief
+    
+    // console.log(typeof(NHIF))
+    // console.log(taxDeductions)
+    // console.log(PAYE)
+    // console.log(personalRelief)
 
 
     netSalary = (taxableIncome - taxDeductions)// calculates netSalary
   
 
     //prints the results of all the values of the defined variables
-    console.log(`Gross Salary: ${grossSalary}\nNSSF: ${NSSF}\nTaxable Income: ${taxableIncome}\nPAYE: ${PAYE}\nPersonal relief: ${personalRelief}\nPAYE After Personal Relief: ${PAYE-personalRelief}\nNHIF: ${NHIF}\nTotal Tax Deductions: ${taxDeductions} \nNet Salary: ${netSalary}`)  
+    alert(`Gross Salary: ${grossSalary}\nNSSF: ${NSSF}\nTaxable Income: ${taxableIncome}\nPAYE: ${PAYE}\nPersonal relief: ${personalRelief}\nPAYE After Personal Relief: ${PAYEAfterPersonalRelief}\nNHIF: ${NHIF}\nTotal Tax Deductions: ${taxDeductions} \nNet Salary: ${netSalary}`)  
     
     //returns the netsalary as the final output of the function and converts the netsalary amount into a float with 2 decimals
     return netSalary.toFixed(2);

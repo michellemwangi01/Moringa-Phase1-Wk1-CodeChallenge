@@ -16,25 +16,25 @@ function studentGrader(studentmark){
             //if the marks are within the range of any of the cases, thus evaluating to TRUE, the student is assigned the grade in that Case.
             switch (true) {
                 case (studentmark > 79):
-                    console.log("Student has scored an A")//The student grade is printed out
+                    alert("Student has scored an A")//The student grade is printed out
                     break;
                 case(studentmark >= 60 && studentmark <= 79):
-                    console.log("Student has scored an B")
+                    alert("Student has scored an B")
                     break;
                 case(studentmark >= 49 && studentmark <= 59):
-                    console.log("Student has scored an C")
+                    alert("Student has scored an C")
                     break; 
                 case(studentmark >= 40 && studentmark <= 49):
-                    console.log("Student has scored an D")
+                    alert("Student has scored an D")
                     break; 
                 case(studentmark < 40):
-                    console.log("Student has scored an E")
+                    alert("Student has scored an E")
 
                 default:
                     break;
             }
         }else{
-            console.log("Please enter a valid grade!")//Prompts the user to enter a valid grade between 0 & 100
+            alert("Please enter a valid grade!")//Prompts the user to enter a valid grade between 0 & 100
         }
     
     
