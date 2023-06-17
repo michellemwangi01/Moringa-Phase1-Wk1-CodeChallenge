@@ -1,7 +1,5 @@
 # Moringa-Phase1-Wk1-CodeChallenge
 
-# phas1-week1-challenge
-# Repository
 
 ## TITLE: Challenge 1: Student Grade Generator
 
@@ -21,13 +19,9 @@ Run Instructions: The program can be run on any browser by accesisng the browser
 This will run the program, initiating some prompts for the user to provide the required information.
 
 
-## Author
+## Author & License
 
-This program was written by [Michelle Mwangi] (https://github.com/michellemwangi01/) 
-
-## License
-
-This project is licensed under the Amirah License
+This program was written by and licensed to [Michelle Mwangi] (https://github.com/michellemwangi01/).
 
 
 
@@ -49,13 +43,9 @@ Run Instructions: The program can be run on any browser by accesisng the browser
 This will run the program, initiating some prompts for the user to provide the required information.
 
 
-## Author
+## Author & License
 
-This program was written by [Michelle Mwangi] (https://github.com/michellemwangi01/) 
-
-## License
-
-This project is licensed under the Amirah License
+This program was written by and licensed to [Michelle Mwangi] (https://github.com/michellemwangi01/).
 
 
 ## TITLE: Challenge 3: Net Salary Calculator
@@ -78,10 +68,7 @@ Run Instructions: The program can be run on any browser by accesisng the browser
 This will run the program, initiating some prompts for the user to provide the required information.
 
 
-## Author
+## Author & License
 
-This program was written by [Michelle Mwangi] (https://github.com/michellemwangi01/) 
+This program was written by and licensed to [Michelle Mwangi] (https://github.com/michellemwangi01/).
 
-## License
-
-This project is licensed under the Amirah License
