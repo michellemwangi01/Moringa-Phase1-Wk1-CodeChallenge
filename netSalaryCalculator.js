@@ -136,7 +136,7 @@ function netSalaryCalculator(basicSalary, benefits, taxableIncomeCalculator,PAYE
     PAYE = PAYECalculator() //calls the PAYECalculator function and stores its return value in the PAYE variable
     NHIF = NHIFCalculator()//calls the NHIFCalculator function and stores its return value in the NHIF variable
     PAYEAfterPersonalRelief = PAYE - personalRelief
-    if(PAYEAfterPersonalRelief < 0){
+    if(PAYEAfterPersonalRelief < 0){//check if the PAYE is less than the personal relief, if so, set paye to 0
         PAYEAfterPersonalRelief = 0
     }
     taxDeductions = ((PAYEAfterPersonalRelief) + NHIF)//calulates taxDeductions including the personal Relief
